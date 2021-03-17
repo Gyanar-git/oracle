@@ -71,23 +71,7 @@ public class ProjectMainTest {
 
     }
 
-    @Test
-    public void testAverageBuildDurationForGeoZoneIsSucessfull() {
-        ProjectUniqueInformation projectUniqueInformation = new ProjectUniqueInformation();
 
-        String str = "2343225,2345,us_east,RedTeam,ProjectApple,3445\n" +
-                "1223456,2345,us_west,BlueTeam,ProjectBanana,2211\n" +
-                "3244332,2346,eu_west,YellowTeam3,ProjectCarrot,4322\n" +
-                "1233456,2345,us_west,BlueTeam,ProjectDate,2221\n" +
-                "3244132,2346,eu_west,YellowTeam3,ProjectEgg,4122";
-
-        String[] tokens = str.split("\\s");
-        List<String> projectListRowWise = Arrays.stream(tokens).collect(Collectors.toList());
-
-        //The average build duration for each Geozone.
-        projectUniqueInformation.getAverageBuildDurationForGeoZone(projectListRowWise);
-
-    }
 
     @Test
     public void testAllRecordIsReturnSucessfull(){
@@ -100,6 +84,20 @@ public class ProjectMainTest {
                 "3244132,2346,eu_west,YellowTeam3,ProjectEgg,4122";
 
         projectUniqueInformation.getUniQueRecords(str);
+
+    }
+
+    @Test
+    public void testData() {
+
+        String str = "2343225,2345,us_east,RedTeam,ProjectApple,3445\n" +
+                "1223456,2345,us_west,BlueTeam,ProjectBanana,2211\n" +
+                "3244332,2346,eu_west,YellowTeam3,ProjectCarrot,4322\n" +
+                "1233456,2345,us_west,BlueTeam,ProjectDate,2221\n" +
+                "3244132,2346,eu_west,YellowTeam3,ProjectEgg,4122";
+
+        ProjectInformationService projectUniqueInformation = new ProjectInformationService();
+        projectUniqueInformation.getUniqueRecords(str);
 
     }
 
