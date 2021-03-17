@@ -12,10 +12,10 @@ public interface IProjectInformation {
         while (iterator.hasNext()) {
             Map.Entry<String, List<String>> entry = iterator.next();
             if(sizeToReturn == Boolean.TRUE) {
-                System.out.println("The number of unique customerId for the contractId:-" + entry.getKey() +
+                System.out.println("The number of unique record for:-" + entry.getKey() +
                         " and the size is = " + entry.getValue().size());
             }else{
-                System.out.println("The number of unique customerId for the contractId:-" + entry.getKey() +
+                System.out.println("The number of unique record for:-" + entry.getKey() +
                         " and the size is = " + entry.getValue());
             }
         }

@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class AvgBuildDurationForGeoZoneImpl implements IProjectInformation {
@@ -23,26 +20,29 @@ public class AvgBuildDurationForGeoZoneImpl implements IProjectInformation {
 
     /**
      *
+     * @param projectListRowWise
+     */
+    public void getAverageBuildDurationForGeoZone(List<String> projectListRowWise) {
+        HashMap<String, List<String>> map = new HashMap<>();
+        for (String projectData : projectListRowWise) {
+            String[] split = projectData.split(",");
+            if (split.length > 0) {
+                map = ProjectInformationUtil.fillMapWithUniqueVal(split[2] , split[5] , map);
+            }
+        }
+        getAverage(map);
+    }
+
+    /**
+     *
      * @param map
      */
     public void getAverage(HashMap<String, List<String>> map) {
         Map<String, Double> results = new HashMap<>();
         for (Map.Entry<String, List<String>> entry : map.entrySet()) {
-            Double average = calcAverage(entry.getValue());
+            Double average = ProjectInformationUtil.calcAverage(entry.getValue());
             results.put(entry.getKey(), average);
         }
-    }
-
-    /**
-     *
-     * @param values
-     * @return
-     */
-    public Double calcAverage(List<String> values) {
-        double result = 0;
-        for (String value : values) {
-            result += Double.parseDouble(value);
-        }
-        return result / values.size();
+        ProjectInformationUtil.dispAverageByGeoZone(results);
     }
 }

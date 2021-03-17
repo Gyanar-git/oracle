@@ -22,24 +22,24 @@ public class ProjectInformationService{
         HashMap<String, List<String>> uniqueRecords = projectInformation.getUniqueRecords(str);
         projectInformation.displayRecords(uniqueRecords, Boolean.TRUE);
 
-        //The number of unique customerId for each Geozone.
+        //The number of unique customerId for each GeoVone.
 
         IProjectInformation projectInformation1 = projectFactory.createUniqueRecord("UniqueCustIdForGeoZone");
         HashMap<String, List<String>> uniqueRecords1 = projectInformation1.getUniqueRecords(str);
         projectInformation.displayRecords(uniqueRecords1, Boolean.TRUE);
 
-        ////The list of unique customerId for each Geozone
+        ////The list of unique customerId for each GeoZone
 
 
         IProjectInformation projectInformation2 = projectFactory.createUniqueRecord("ListOfUniqueCustIdForGeoZone");
         HashMap<String, List<String>> uniqueRecords2 = projectInformation2.getUniqueRecords(str);
         projectInformation.displayRecords(uniqueRecords2, Boolean.FALSE);
 
-        //The average build duration for each Geozone.
+        //The average build duration for each GeoZone.
 
         IProjectInformation projectInformation3 = projectFactory.createUniqueRecord("AvgBuildDurationForGeoZone");
-        HashMap<String, List<String>> uniqueRecords3 = projectInformation3.getUniqueRecords(str);
-        projectInformation.displayRecords(uniqueRecords3, Boolean.FALSE);
+        projectInformation3.getUniqueRecords(str);
+
     }
 
 }

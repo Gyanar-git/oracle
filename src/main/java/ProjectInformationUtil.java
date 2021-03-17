@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ProjectInformationUtil {
@@ -34,5 +31,33 @@ public class ProjectInformationUtil {
         String[] tokens = str.split("\\s");
         List<String> projectListRowWise = Arrays.stream(tokens).collect(Collectors.toList());
         return projectListRowWise;
+    }
+
+
+
+    /**
+     *
+     * @param results
+     */
+    public static void dispAverageByGeoZone(Map<String, Double> results) {
+        Iterator<Map.Entry<String, Double>> iterator = results.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<String, Double> entry = iterator.next();
+            System.out.println("The average build duration for the Geo Zone:-" + entry.getKey() +
+                    " and value is = " + entry.getValue());
+        }
+    }
+
+    /**
+     *
+     * @param values
+     * @return
+     */
+    public static Double calcAverage(List<String> values) {
+        double result = 0;
+        for (String value : values) {
+            result += Double.parseDouble(value);
+        }
+        return result / values.size();
     }
 }
